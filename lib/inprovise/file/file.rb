@@ -3,11 +3,11 @@
 # Author::    Martin Corino
 # License::   Distributes under the same license as Ruby
 
-module Inprovise::File
+module Inprovise::FileAction
 
   module DSLExt
     def file(config, &action)
-      Inprovise::File::ScriptExt.new(@script, config, &action).configure
+      Inprovise::FileAction::ScriptExt.new(@script, config, &action).configure
     end
   end
 

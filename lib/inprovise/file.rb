@@ -6,7 +6,7 @@
 require 'rubygems'
 require 'inprovise'
 
-module Inprovise::File
+module Inprovise::FileAction
 
   VERSION = '0.1.1'
 
