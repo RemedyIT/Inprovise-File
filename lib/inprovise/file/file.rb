@@ -85,13 +85,13 @@ module Inprovise::FileAction
         apply do
           if fa.create_dir(self)
             mk_dir = fa.create_dir(self) == true ? File.dirname(fa.remote_path(self)) : fa.create_dir(self)
-            sudo("mkdir -p #{mk_dir}")
-            sudo("chown #{fa.user(self)}:#{fa.group(self) || fa.user(self)} #{mk_dir}") if fa.user(self)
+            run("mkdir -p #{mk_dir}")
+            run("chown #{fa.user(self)}:#{fa.group(self) || fa.user(self)} #{mk_dir}") if fa.user(self)
           end
           local_file = local(fa.local_path_for_node(self))
           tmp_path = "inprovise-tmp-#{local_file.hash}"
           local_file.copy_to(remote(tmp_path))
-          sudo("mv #{tmp_path} #{fa.remote_path(self)}")
+          run("mv #{tmp_path} #{fa.remote_path(self)}")
           #fa.run_after_apply(self)
         end
 
