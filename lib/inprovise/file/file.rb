@@ -115,7 +115,8 @@ module Inprovise::FileAction
 
         validate do
           r_file = remote(fa.remote_path(self))
-          valid = r_file.permissions == fa.permissions(self)
+          valid = true
+          valid = r_file.permissions == fa.permissions(self) if fa.permissions(self)
           valid = valid && r_file.user == fa.user(self) if fa.user(self)
           valid = valid && r_file.group == fa.group(self) if fa.group(self)
           valid

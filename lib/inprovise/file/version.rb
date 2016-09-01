@@ -3,8 +3,8 @@
 # Author::    Martin Corino
 # License::   Distributes under the same license as Ruby
 
-module Inprovise::FileAction
+module Inprovise; module FileAction
 
-  VERSION = '0.1.1'
+  VERSION = '0.2.1'
 
-end
+end; end
