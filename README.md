@@ -5,6 +5,11 @@ Inprovise File dependency
 This project implements an extension for the Inprovise provisioning tool providing a `file` command to the basic
 Inprovise scripts.
 
+[![Build Status](https://travis-ci.org/mcorino/Inprovise-File.png)](https://travis-ci.org/mcorino/Inprovise-File)
+[![Code Climate](https://codeclimate.com/github/mcorino/Inprovise-File/badges/gpa.png)](https://codeclimate.com/github/mcorino/Inprovise-File)
+[![Test Coverage](https://codeclimate.com/github/mcorino/Inprovise-File/badges/coverage.png)](https://codeclimate.com/github/mcorino/Inprovise-File/coverage)
+[![Gem Version](https://badge.fury.io/rb/inprovise-file.png)](https://badge.fury.io/rb/inprovise-file)
+
 Installation
 ------------
 
