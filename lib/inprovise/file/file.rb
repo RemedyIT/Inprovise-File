@@ -85,14 +85,13 @@ module Inprovise::FileAction
         apply do
           if fa.create_dir(self)
             mk_dir = fa.create_dir(self) == true ? File.dirname(fa.remote_path(self)) : fa.create_dir(self)
-            run("mkdir -p #{mk_dir}")
-            run("chown #{fa.user(self)}:#{fa.group(self) || fa.user(self)} #{mk_dir}") if fa.user(self)
+            mkdir(mk_dir)
+            remote(mk_dir).set_owner(fa.user(self), fa.group(self) || fa.user(self)) if fa.user(self)
           end
           local_file = local(fa.local_path_for_node(self))
           tmp_path = "inprovise-tmp-#{local_file.hash}"
           local_file.copy_to(remote(tmp_path))
-          run("mv #{tmp_path} #{fa.remote_path(self)}")
-          #fa.run_after_apply(self)
+          remote(tmp_path).move_to(fa.remote_path(self))
         end
 
         revert do
@@ -124,7 +123,7 @@ module Inprovise::FileAction
       end
     end
 
-    def script_name(suffix)
+    def script_name(suffix=nil)
       name = @config[:name]
       if name.nil? && !@config[:destination].is_a?(String)
         raise ArgumentError, 'You must provide a :name option unless :destination is a String'
