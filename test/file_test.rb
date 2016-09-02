@@ -7,8 +7,11 @@ require_relative 'test_helper'
 
 describe Inprovise::FileAction do
   before :each do
-    reset_script_index!
     @script = Inprovise::Script.new('my-script')
+  end
+
+  after :each do
+    reset_script_index!
   end
 
   describe "Inprovise::FileAction::ScriptExt" do
@@ -84,10 +87,13 @@ describe Inprovise::FileAction do
 
   describe 'applying' do
     before :each do
-      reset_infrastructure!
       @local_file_path = File.join(File.dirname(__FILE__), 'fixtures', 'example.txt')
       @node = Inprovise::Infrastructure::Node.new('myNode', {channel: 'test', helper: 'test'})
       @runner = Inprovise::ScriptRunner.new(@node, @script)
+    end
+
+    after :each do
+      reset_infrastructure!
     end
 
     it 'applies a file dependency' do
@@ -172,10 +178,13 @@ describe Inprovise::FileAction do
 
   describe 'reverting' do
     before :each do
-      reset_infrastructure!
       @local_file_path = File.join(File.dirname(__FILE__), 'fixtures', 'example.txt')
       @node = Inprovise::Infrastructure::Node.new('myNode', {channel: 'test', helper: 'test'})
       @runner = Inprovise::ScriptRunner.new(@node, @script)
+    end
+
+    after :each do
+      reset_infrastructure!
     end
 
     it 'reverts a file dependency' do
