@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["mcorino@remedy.nl"]
   gem.description   = %q{File dependency extension for Inprovise scripts}
   gem.summary       = %q{Simple, easy and intuitive provisioning}
-  gem.homepage      = "https://github.com/mcorino/Inprovise-File"
+  gem.homepage      = "https://github.com/RemedyIT/Inprovise-File"
   gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($\)
